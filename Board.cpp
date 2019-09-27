@@ -13,7 +13,39 @@
 #include "Board.h"
 #include <sstream>
 #include <limits>
-
+using namespace std;
+////////////////####################NEW_CODE###############################################
+void Board::setupBoard_AI()
+{
+srand( time(NULL) );
+std::string ai_Placement = "";
+int rand_Orientation_Num = 0; //FOR_RANDOM_NUMBER_GENERATION(1 or 2) FOR ORIENTATION (rand()%2;)
+m_ship =  new Ship[numberOfShips];
+for(int i = 0; i < numberOfShips; i++)
+{
+	m_ship[i].createShip(i+1);	//creates a ship at each index, of which the size corresponds to the index +1 (eg. index 0 houses ship of length 1, index 1 houses ship of length 2)
+	if(m_ship[i].getLength() == 1)	//if the ship is length 1, we do not need to do horizontal or vertical collision checks, so we just ask where to place it
+	{
+		ai_Placement = randPosGen();
+		myBoard[m_rowIndex][m_columnIndex] = ship;	//sets the user's guess location to a ship
+		m_ship[i].setCoordinate(ai_Placement, 0);
+}
+}
+}
+std::string Board::randPosGen()
+{
+	srand( time(NULL) );
+	std::string result="";
+	int rand_Letter_num = rand()%(8-1 + 1) + 1;
+	int rand_Num_Coord = rand()%(8-1 + 1) + 1;
+	char rand_letter = 'p';
+	rand_Letter_num+=64; //SETS_TO_CORRECT_ASCII_VAL
+	rand_Num_Coord+=48; //sets to correct ASCII val to allow for str concatination.
+	result +=(char)rand_Letter_num;
+	result +=(char)rand_Num_Coord;
+	return(result);
+}
+////////////////####################OLD_CODE###############################################
 Board::Board(int shipnum)
 {
 	numberOfShips = shipnum;	//the number of ships per player.
@@ -391,7 +423,7 @@ void Board::setupBoard()	//sets up the board
 			}while(!HorV);	//runs until the user has inputed "H" or "h" or "V" or "v". Also, there are checks to insure that the location was valid first as well, before getting to this point
 
 
-		}
+		}	printIntermission();
 
 	}
 	std::cout << "Press Enter to go to the next Player's turn: ";

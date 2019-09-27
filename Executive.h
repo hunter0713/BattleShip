@@ -66,5 +66,6 @@ private:
 	Player* player_2;		//player object for player2
 	int m_player_1Turn; //true if player1 turn, false if player2 turn
 	bool m_gameOver;	//game over to stop the while loop once the game ends
+	int ai_Difficulty;
 };
 #endif

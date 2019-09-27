@@ -27,6 +27,21 @@
 class Board
 {
 private:
+	/////////////////////////NEW_CODE//////////////////////////////
+	/**
+	* @pre none
+	*	@param none
+	*	@post asks the player where they want to place the ships.
+	* uses with withinBoundary and edits myBoard and shotBoard
+	*/
+	void setupBoard_AI();
+	/**
+	* @pre none
+	*	@param none
+	*	@return: - The String containing the randomly generated coordinate.
+	*/
+	std::string randPosGen();
+	////////////////////////////OLD_CODE//////////////////////////
 	std::string shotBoard[8][8];
 	std::string myBoard[8][8];
 	std::string m_rowNames = "ABCDEFGH";

@@ -57,13 +57,15 @@ Executive::Executive()		//Executive constructor
 	{
 			std::cout<<"Please Choose Game Mode:\n" << "1.) Single Player vs AI\n2.) 2-Player\n>> ";
 			std::cin >> menuChoice;
-			if(menuChoice == 1)
+			if(menuChoice == 2)
 			{
 				start = true;
 			}
-			else if(menuChoice == 2)
+			else if(menuChoice == 1)
 			{
 				start =  true;
+				std::cout <<"Now choose difficulty(1-3): ";
+				std::cin >> ai_Difficulty;
 			}
 	}
 	int numOfBoats = 0;		//int numOfBoats to store the number of boats
@@ -91,10 +93,27 @@ Executive::Executive()		//Executive constructor
 }
 else if(menuChoice == 1)
 {
-	player_1 = new Player(numOfBoats); 		//create player 1 object passing in the number of boats
-	std::cout <<"\nPlayer 1 place your ships\n";		//prompt player1 to place their ships
-	player_1 -> getBoard() -> setupBoard();					//call getBoard and setupBoard from board.cpp to create the two boards for player1
+	player_1 = new Player(numOfBoats); 		//create player
+	std::cout <<"\nPlayer 1 place your ships\n";
+	player_1 -> getBoard() -> setupBoard(); //setup only player
+	//player_2 ->getBoard() -> setupBoard(); 
 	////////////Start AI game/////////////////////////
+	if(ai_Difficulty == 1)
+	{
+		//easy difficulty
+	}
+	else if(ai_Difficulty == 2)
+	{
+   //normal difficulty
+	}
+	else if(ai_Difficulty == 3)
+	{
+		//hard difficulty
+	}
+	else
+	{
+		//error catching somehow
+	}
 }
 }
 
