@@ -50,18 +50,34 @@ int Executive::boatCheck() //will return numOfBoats when valid
 
 Executive::Executive()		//Executive constructor
 {
+	start = false;
+	menuChoice =0;
+	std::cout << "Welcome to BattleShip!\n";
+	while(start!=true)
+	{
+			std::cout<<"Please Choose Game Mode:\n" << "1.) Single Player vs AI\n2.) 2-Player\n>> ";
+			std::cin >> menuChoice;
+			if(menuChoice == 1)
+			{
+				start = true;
+			}
+			else if(menuChoice == 2)
+			{
+				start =  true;
+			}
+	}
 	int numOfBoats = 0;		//int numOfBoats to store the number of boats
 
-	try		//DO WE NEED TRY CATCH HERE???!
+	try
 	{
 		numOfBoats = boatCheck();		//try block to set Executive constructor's numOfBoats to the value returned by boatCheck
 	}
-
 	catch(std::runtime_error &rte)	//catch error if the function fails
 	{
 		std::cout << "Invalid number of ships";		//print error message if the function fails
 	}
-
+	if(menuChoice == 2)
+	{
 	player_1 = new Player(numOfBoats); 		//create player 1 object passing in the number of boats
 	player_2 = new Player(numOfBoats);		//create player 2 object passing in the number of boats
 	m_gameOver = false;			//m_gameOver member variable set to false at the beginning of the game
@@ -72,7 +88,14 @@ Executive::Executive()		//Executive constructor
 	std::cout <<"\nPlayer 2 place your ships\n";		//promt player2 to place their ships
 	player_2 -> getBoard() -> setupBoard();					//call getBoard and setupBoard from board.cpp to create the two boards for player2
 	game();		//call Executive game function to start the game once both players have set up their boards
-
+}
+else if(menuChoice == 1)
+{
+	player_1 = new Player(numOfBoats); 		//create player 1 object passing in the number of boats
+	std::cout <<"\nPlayer 1 place your ships\n";		//prompt player1 to place their ships
+	player_1 -> getBoard() -> setupBoard();					//call getBoard and setupBoard from board.cpp to create the two boards for player1
+	////////////Start AI game/////////////////////////
+}
 }
 
 Executive::~Executive()		//Executive destructor

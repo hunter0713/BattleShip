@@ -60,7 +60,8 @@ public:
 	int boatCheck();
 
 private:
-
+	bool start;
+	int menuChoice;
 	Player* player_1;		//player object for player1
 	Player* player_2;		//player object for player2
 	int m_player_1Turn; //true if player1 turn, false if player2 turn

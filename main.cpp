@@ -14,8 +14,7 @@
 #include "Executive.h"			//include executive for game functions
 
 int main()
-{
-	std::cout << "Welcome to BattleShip!\n";		//print welcome message
+{	
 	Executive exec;	//create executive object to utilize all game functions
 	return 0;				//exit program
 }
