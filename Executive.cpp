@@ -15,6 +15,7 @@
 #include <limits>
 #include "algorithm" //for toupper
 
+
 int Executive::boatCheck() //will return numOfBoats when valid
 {
 	int numOfBoats = 0;						//declaring numberOfBoats
@@ -67,6 +68,7 @@ Executive::Executive()		//Executive constructor
 				std::cout <<"Now choose difficulty(1-3): ";
 				std::cin >> ai_Difficulty;
 			}
+
 	}
 	int numOfBoats = 0;		//int numOfBoats to store the number of boats
 
@@ -93,21 +95,27 @@ Executive::Executive()		//Executive constructor
 }
 else if(menuChoice == 1)
 {
+
 	player_1 = new Player(numOfBoats); 		//create player
 	std::cout <<"\nPlayer 1 place your ships\n";
 	player_1 -> getBoard() -> setupBoard(); //setup only player
-	//player_2 ->getBoard() -> setupBoard(); 
 	////////////Start AI game/////////////////////////
 	if(ai_Difficulty == 1)
 	{
-		//easy difficulty
+		cout << "Setting up easy AI" << endl;
+		player_2 -> getBoard() -> setupBoard_AI();
+
 	}
 	else if(ai_Difficulty == 2)
 	{
+		cout << "Setting up normal AI" << endl;
+		player_2 -> getBoard() -> setupBoard_AI();
    //normal difficulty
 	}
 	else if(ai_Difficulty == 3)
 	{
+		cout << "Setting up hard AI" << endl;
+		player_2 -> getBoard() -> setupBoard_AI();
 		//hard difficulty
 	}
 	else
@@ -223,6 +231,125 @@ void Executive::game()
 
 }
 
+////////////////###########################################################################
+////////////////####################NEW_CODE###############################################
+////////////////###########################################################################
+
+
+void Executive::AIgame() //Zack: I just copy and pasted the orignal game code and am adding changes for AI turns
+{
+	std::string guess = " ";
+
+	while(!m_gameOver)
+	{
+		try
+		{
+			guess = " ";			//reinitializes guess to prevent infinite out of boundary loop
+
+			while(guess.length() != 2)
+			{
+				if(m_player_1Turn % 2 == 1)	//if it is player 1's turn
+				{
+					player_1->getBoard()->printShotBoard();
+					player_1->getBoard()->printMyBoard();
+					std::cout << "Player 1: Where would you like to shoot: "; //print player's board and opponent's board and ask for user a location to shoot
+
+					std::getline(std::cin, guess);
+
+					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);	//converts guess to uppercase
+
+					std::cout << "guess: " << guess << "\n"; //print out user's guess
+
+					if(guess.length() != 2)
+					{
+						std::cout << "Invalid coordinate! Try again.\n"; //error if user inputs a string which length is not 2
+					}
+
+				}
+				else	//if it is AI turn
+				{
+					player_2->getBoard()->printShotBoard();
+					player_2->getBoard()->printMyBoard();
+					std::cout <<"Allowing for AI shot "; //print player's board and opponent's board
+
+					if(ai_Difficulty == 1) //Randomly generates positions for easy AI
+						{
+							guess = player_2->getBoard().randPosGen();
+						}
+					if(ai_Difficulty == 2) //Normal AI shot mechanics go here
+						{
+
+						}
+					if(ai_Difficulty == 3) // Hard AI shot mechanics go here
+						{
+
+						}
+
+					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);	//converts guess to uppercase
+
+					if(guess.length() != 2)
+					{
+						std::cout << "Invalid coordinate! Try again.\n";//error if user inputs a string which length is not 2
+					}
+
+				}
+			}
+
+			shoot(guess); //shoot the location as user demand
+
+			if(m_player_1Turn % 2 == 1 && !m_gameOver) //if it is player 1's turn
+			{
+
+				std::cout << "PLAYER 1 TURN\n";
+				player_1->getBoard()->printShotBoard();
+				player_1->getBoard()->printMyBoard();
+
+				std::cout <<"Player 1 please hit enter and let other player shoot at your ships in secret: "; //print the board for checking hit or not and hit eneter for next player's turn
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
+
+				player_1->getBoard()->printIntermission();
+			}
+			else if(m_player_1Turn % 2 == 0 && !m_gameOver)	//if it is player 2's turn
+			{
+				std::cout << "PLAYER 2 TURN\n";
+				player_2->getBoard()->printShotBoard();
+				player_2->getBoard()->printMyBoard();
+
+				std::cout <<"Player 2 please hit enter and let other player shoot at your ships in secret: ";//print the board for checking hit or not and hit eneter for next player's turn
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
+
+				player_2->getBoard()->printIntermission();
+			}
+
+			m_player_1Turn++; //change player turn
+		}
+		catch(std::runtime_error &rte)
+		{
+			std::cout << rte.what();
+		}
+	}
+
+	if(m_player_1Turn % 2 == 1) //m_player_1Turn gets changed right before this, which is why the value is comparing different than above
+	{
+		player_2->getBoard()->printShotBoard();
+		player_2->getBoard()->printMyBoard();
+
+		std::cout << "PLAYER 2 WINS!\n";
+	}
+	else
+	{
+		player_1->getBoard()->printShotBoard();
+		player_1->getBoard()->printMyBoard();
+
+		std::cout << "PLAYER 1 WINS!\n";
+	}
+
+}
+
+
+////////////////###########################################################################
+////////////////####################OLD_CODE###############################################
+////////////////###########################################################################
 void Executive::shoot(std::string location)
 {
 	int numberOfShips = player_1->getBoard()->getNumberofShips(); //sets the number of ships

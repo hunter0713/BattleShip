@@ -17,6 +17,7 @@
 #include <iostream>
 #include <fstream>
 #include "Player.h"		//include player to utilize player objects
+using namespace std;
 
 /**
  * The Executive class controls the game
@@ -58,6 +59,12 @@ public:
 	* @return number of Ships
 	*/
 	int boatCheck();
+	/**
+	* @pre none
+	*	@param none
+	*	@post starts game with AI opponent
+	*/
+	void AIgame();
 
 private:
 	bool start;
