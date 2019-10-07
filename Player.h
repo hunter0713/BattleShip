@@ -81,6 +81,6 @@ public:
   *	@post the the player's board
   * @return player's board
   */
-  Board* getBoard() const;
+  Board* getBoard();
 };
 #endif

@@ -30,6 +30,7 @@ for(int i = 0; i < numberOfShips; i++)
 	if(m_ship[i].getLength() == 1)	//if the ship is length 1, we do not need to do horizontal or vertical collision checks, so we just ask where to place it
 	{
 		ai_Placement = randPosGen();
+		ai_Placement = randPosGen();
 		myBoard[m_rowIndex][m_columnIndex] = ship;	//sets the user's guess location to a ship
 		m_ship[i].setCoordinate(ai_Placement, 0);
 }

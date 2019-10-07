@@ -61,6 +61,7 @@ public:
 	*	@return: - The String containing the randomly generated coordinate.
 	*/
 	std::string randPosGen();
+
 	////////////////////////////OLD_CODE//////////////////////////
 	std::string shotBoard[8][8];
 	/**

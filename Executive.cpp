@@ -10,7 +10,6 @@
 * \copyright: Group "Big SegFault Energy" All rights reserved
 */
 
-
 #include "Executive.h"
 #include <limits>
 #include "algorithm" //for toupper
@@ -117,6 +116,7 @@ else if(menuChoice == 1)
 	{
 		cout << "Setting up hard AI" << endl;
 		player_2 -> getBoard() -> setupBoard_AI();
+		AIgame();
 		//hard difficulty
 	}
 	else
@@ -285,6 +285,8 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 						{
 
 						}
+					}
+				}
 
 					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);	//converts guess to uppercase
 
@@ -293,8 +295,8 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 						std::cout << "Invalid coordinate! Try again.\n";//error if user inputs a string which length is not 2
 					}
 
-				}
-			}
+
+
 
 			shoot(guess); //shoot the location as user demand
 

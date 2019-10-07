@@ -51,7 +51,7 @@ bool Player::gettingShot(std::string userGuess)
 
 }
 
-Board* Player::getBoard() const
+Board* Player::getBoard()
 {
 	return m_board;
 }
