@@ -22,6 +22,8 @@ std::string ai_Placement = "";
 int rand_Orientation_Num = 0; //FOR_RANDOM_NUMBER_GENERATION(1 or 2) FOR ORIENTATION (rand()%2;)
 std::string orientationHorV = "";
 m_ship =  new Ship[numberOfShips];
+bool validLoc = false;
+std::string temp;
 for(int i = 0; i < numberOfShips; i++)
 {
 	m_ship[i].createShip(i+1);	//creates a ship at each index, of which the size corresponds to the index +1 (eg. index 0 houses ship of length 1, index 1 houses ship of length 2)
@@ -33,16 +35,66 @@ for(int i = 0; i < numberOfShips; i++)
 }
 else{
 	rand_Orientation_Num = rand() % 2;
-	if(rand_Orientation_Num == 0){
+	if(rand_Orientation_Num == 0)					//0 for horizontal; 1 for vertical
+	{
+			validLoc = false;
+			ai_Placement = randPosGen();
 			orientationHorV = "H";
+			while(validLoc == false)
+			{
+				if(noHorizontalCollision(ai_Placement,i+1))
+				{
+					guessConversion(ai_Placement);
+					temp = ai_Placement;
+					for(int j = 0; j<m_ship[i].getLength(); j++)
+					{
+						myBoard[m_rowIndex][m_columnIndex+j] = ship;
+						m_ship[i].setCoordinate(temp,j);
+						temp[0] = temp.at(0) + 1;
+					}
+					printMyBoard();
+					validLoc = true;
+
+				}
+				else
+				{
+					ai_Placement = randPosGen();
+				}
+			}
 	}
 	else{
 			orientationHorV = "V";
+			validLoc = false;
+			ai_Placement = randPosGen();
+			while(validLoc == false)
+			{
+				if(noVerticalCollision(ai_Placement,i+1))
+				{
+					guessConversion(ai_Placement);
+					temp = ai_Placement;
+					for(int j = 0; j < m_ship[i].getLength(); j++ )
+					{
+						myBoard[m_rowIndex+j][m_columnIndex] = ship;
+						m_ship[i].setCoordinate(temp, j);
+						temp[1] = temp.at(1) + 1;
+
+
+					}
+					printMyBoard();
+					validLoc = true;
+				}
+				else
+				{
+					ai_Placement = randPosGen();
+				}
+			}
 	}
-	//place rest of ships.
 }
 
 }
+std::cout << "Press Enter to Start Game: ";
+
+std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 }
 std::string Board::randPosGen()
 {
