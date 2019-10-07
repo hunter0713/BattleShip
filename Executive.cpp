@@ -97,6 +97,7 @@ else if(menuChoice == 1)
 {
 
 	player_1 = new Player(numOfBoats); 		//create player
+	player_2 = new Player(numOfBoats);
 	std::cout <<"\nPlayer 1 place your ships\n";
 	player_1 -> getBoard() -> setupBoard(); //setup only player
 	////////////Start AI game/////////////////////////
@@ -274,7 +275,7 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 
 					if(ai_Difficulty == 1) //Randomly generates positions for easy AI
 						{
-							guess = player_2->getBoard().randPosGen();
+							guess = player_2->getBoard()->randPosGen();
 						}
 					if(ai_Difficulty == 2) //Normal AI shot mechanics go here
 						{

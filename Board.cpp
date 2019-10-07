@@ -20,6 +20,7 @@ void Board::setupBoard_AI()
 srand( time(NULL) );
 std::string ai_Placement = "";
 int rand_Orientation_Num = 0; //FOR_RANDOM_NUMBER_GENERATION(1 or 2) FOR ORIENTATION (rand()%2;)
+std::string orientationHorV = "";
 m_ship =  new Ship[numberOfShips];
 for(int i = 0; i < numberOfShips; i++)
 {
@@ -30,6 +31,17 @@ for(int i = 0; i < numberOfShips; i++)
 		myBoard[m_rowIndex][m_columnIndex] = ship;	//sets the user's guess location to a ship
 		m_ship[i].setCoordinate(ai_Placement, 0);
 }
+else{
+	rand_Orientation_Num = rand() % 2;
+	if(rand_Orientation_Num == 0){
+			orientationHorV = "H";
+	}
+	else{
+			orientationHorV = "V";
+	}
+	//place rest of ships.
+}
+
 }
 }
 std::string Board::randPosGen()
@@ -38,7 +50,6 @@ std::string Board::randPosGen()
 	std::string result="";
 	int rand_Letter_num = rand()%(8-1 + 1) + 1;
 	int rand_Num_Coord = rand()%(8-1 + 1) + 1;
-	char rand_letter = 'p';
 	rand_Letter_num+=64; //SETS_TO_CORRECT_ASCII_VAL
 	rand_Num_Coord+=48; //sets to correct ASCII val to allow for str concatination.
 	result +=(char)rand_Letter_num;
