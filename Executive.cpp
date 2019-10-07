@@ -105,7 +105,7 @@ else if(menuChoice == 1)
 	{
 		cout << "Setting up easy AI" << endl;
 		player_2 -> getBoard() -> setupBoard_AI();
-
+		AIgame();
 	}
 	else if(ai_Difficulty == 2)
 	{
@@ -304,24 +304,7 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 				std::cout << "PLAYER 1 TURN\n";
 				player_1->getBoard()->printShotBoard();
 				player_1->getBoard()->printMyBoard();
-
-				std::cout <<"Player 1 please hit enter and let other player shoot at your ships in secret: "; //print the board for checking hit or not and hit eneter for next player's turn
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
-
-				player_1->getBoard()->printIntermission();
 			}
-			else if(m_player_1Turn % 2 == 0 && !m_gameOver)	//if it is player 2's turn
-			{
-				std::cout << "PLAYER 2 TURN\n";
-				player_2->getBoard()->printShotBoard();
-				player_2->getBoard()->printMyBoard();
-
-				std::cout <<"Player 2 please hit enter and let other player shoot at your ships in secret: ";//print the board for checking hit or not and hit eneter for next player's turn
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
-
-				player_2->getBoard()->printIntermission();
-			}
-
 			m_player_1Turn++; //change player turn
 		}
 		catch(std::runtime_error &rte)

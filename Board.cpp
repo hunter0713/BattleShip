@@ -52,7 +52,6 @@ else{
 						m_ship[i].setCoordinate(temp,j);
 						temp[0] = temp.at(0) + 1;
 					}
-					printMyBoard();
 					validLoc = true;
 
 				}
@@ -80,7 +79,6 @@ else{
 
 
 					}
-					printMyBoard();
 					validLoc = true;
 				}
 				else
@@ -92,6 +90,7 @@ else{
 }
 
 }
+printMyBoard();//to test if AI correctly places ships
 std::cout << "Press Enter to Start Game: ";
 
 std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
