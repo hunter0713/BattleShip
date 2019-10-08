@@ -223,7 +223,7 @@ void Executive::game()
 
 		std::cout << "PLAYER 2 WINS!\n";
 		std::cout << "Player 2 sunk "<<player_1->getBoard()->getNumberofShips()<<" ship(s)\n";
-		std::cout << "Player 1 sunk "<<(player_2->getBoard()->getNumberofShips())-(player_2->getBoard()->getShipsLeft())<<" ship()\n";
+		std::cout << "Player 1 sunk "<<(player_2->getBoard()->getNumberofShips())-(player_2->getBoard()->getShipsLeft())<<" ship(s)\n";
 	}
 	else
 	{
@@ -325,7 +325,9 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 	{
 		player_2->getBoard()->printShotBoard();
 		player_2->getBoard()->printMyBoard();
-		std::cout << "PLAYER 2 WINS!\n";
+		std::cout << "The AI won!\n";
+		std::cout << "AI sunk "<<player_1->getBoard()->getNumberofShips()<<" ship(s)\n";
+		std::cout << "Player 1 sunk "<<(player_2->getBoard()->getNumberofShips())-(player_2->getBoard()->getShipsLeft())<<" ship(s)\n";
 	}
 	else
 	{
@@ -333,6 +335,8 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 		player_1->getBoard()->printMyBoard();
 
 		std::cout << "PLAYER 1 WINS!\n";
+		std::cout << "Player 2 sunk "<<(player_1->getBoard()->getNumberofShips())-(player_1->getBoard()->getShipsLeft())<<" ship(s)\n";
+		std::cout << "Player 1 sunk "<<player_2->getBoard()->getNumberofShips()<<" ship(s)\n";
 	}
 
 }
@@ -410,3 +414,4 @@ void Executive::shoot(std::string location)
 		}
 	}
 }
+

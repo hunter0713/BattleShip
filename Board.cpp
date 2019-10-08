@@ -23,6 +23,7 @@ std::string ai_Placement = "";
 int rand_Orientation_Num = 0; //FOR_RANDOM_NUMBER_GENERATION(1 or 2) FOR ORIENTATION (rand()%2;)
 std::string orientationHorV = "";
 m_ship =  new Ship[numberOfShips];
+shipsLeft= numberOfShips;
 bool validLoc = false;
 std::string temp;
 for(int i = 0; i < numberOfShips; i++)
