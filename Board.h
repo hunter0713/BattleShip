@@ -38,7 +38,7 @@ private:
 	*	@post converts userGuess to two array indices, updating rowIndex and columnIndex
 	*/
 	void guessConversion(std::string userGuess);
-
+	int shipsLeft;
 	std::string blueTilde;
 	std::string redHit;
 	std::string whiteMiss;
@@ -121,6 +121,23 @@ public:
 	* @return number of Ships
 	*/
 	int getNumberofShips() const;
+
+	/**
+	*	private member variable helper function
+	* @pre none
+	*	@param takes a int for number of ships
+	*	@post change private member variable shipsLeft to tempNum
+	*/
+	void setShipsLeft(int tempNum);
+
+	/**
+	*	private member variable helper function
+	* @pre none
+	*	@param none
+	*	@post get private member variable shipsLeft
+	* @return number of Ships left
+	*/
+	int getShipsLeft() const;
 
 	/**
 	* @pre none

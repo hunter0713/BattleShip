@@ -220,6 +220,7 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player's 
 					if(m_ship[i].isSunk())	//then, we check if it has an amount of damage counters equal to its length, meaning it has been sunk
 					{
 						std::cout << "BATTLESHIP SUNK!!!\n";	//prints that the ship has been sunk
+						setShipsLeft(shipsLeft-1);
 					}
 					break;	//we can break since we found the indices of the userGuess location ship
 				}
@@ -340,7 +341,6 @@ bool Board::noVerticalCollision(std::string userGuess, int shipLength)	//returns
  }
  return true;	//returns true since all the false checks were not hit, so there is no collision that would happen
 }
-
 void Board::setupBoard()	//sets up the board
 {
 	std::string userGuess;	//used to take in the user's location
@@ -350,6 +350,7 @@ void Board::setupBoard()	//sets up the board
 	bool HorV = false; //gets set to true if the user types "H" or "h" or "V" or "v"
 
 	m_ship =  new Ship[numberOfShips];	//creates an array of Ship objects, the amount is the number of ships
+	shipsLeft=numberOfShips;
 	for(int i = 0; i < numberOfShips; i++)
 	{
 		m_ship[i].createShip(i+1);	//creates a ship at each index, of which the size corresponds to the index +1 (eg. index 0 houses ship of length 1, index 1 houses ship of length 2)
@@ -506,6 +507,16 @@ void Board::setNumberofShips(int shipnum)	//sets the number of ships
 int Board::getNumberofShips() const	//returns the number of ships
 {
 	return numberOfShips;
+}
+
+void Board::setShipsLeft(int tempNum)
+{
+	shipsLeft= tempNum;
+}
+
+int Board::getShipsLeft() const
+{
+	return shipsLeft;
 }
 
 Ship* Board::getShip() const	//returns m_ship
