@@ -222,6 +222,8 @@ void Executive::game()
 		player_2->getBoard()->printMyBoard();
 
 		std::cout << "PLAYER 2 WINS!\n";
+		std::cout << "Player 2 sunk "<<player_1->getBoard()->getNumberofShips()<<" ship(s)\n";
+		std::cout << "Player 1 sunk "<<(player_2->getBoard()->getNumberofShips())-(player_2->getBoard()->getShipsLeft())<<" ship()\n";
 	}
 	else
 	{
@@ -229,6 +231,8 @@ void Executive::game()
 		player_1->getBoard()->printMyBoard();
 
 		std::cout << "PLAYER 1 WINS!\n";
+		std::cout << "Player 2 sunk "<<(player_1->getBoard()->getNumberofShips())-(player_1->getBoard()->getShipsLeft())<<" ship(s)\n";
+		std::cout << "Player 1 sunk "<<player_2->getBoard()->getNumberofShips()<<" ship(s)\n";
 	}
 
 }
