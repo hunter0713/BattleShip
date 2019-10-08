@@ -13,6 +13,7 @@
 #include "Board.h"
 #include <sstream>
 #include <limits>
+#include <cstdlib>
 using namespace std;
 ////////////////####################NEW_CODE###############################################
 void Board::setupBoard_AI()
@@ -30,7 +31,7 @@ for(int i = 0; i < numberOfShips; i++)
 	if(m_ship[i].getLength() == 1)	//if the ship is length 1, we do not need to do horizontal or vertical collision checks, so we just ask where to place it
 	{
 		ai_Placement = randPosGen();
-		ai_Placement = randPosGen();
+		guessConversion(ai_Placement);
 		myBoard[m_rowIndex][m_columnIndex] = ship;	//sets the user's guess location to a ship
 		m_ship[i].setCoordinate(ai_Placement, 0);
 }
@@ -98,7 +99,6 @@ std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 }
 std::string Board::randPosGen()
 {
-	srand( time(NULL) );
 	std::string result="";
 	int rand_Letter_num = rand()%(8-1 + 1) + 1;
 	int rand_Num_Coord = rand()%(8-1 + 1) + 1;
