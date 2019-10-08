@@ -94,7 +94,8 @@ Executive::Executive()		//Executive constructor
 }
 else if(menuChoice == 1)
 {
-
+	m_gameOver = false;
+	m_player_1Turn = 1;
 	player_1 = new Player(numOfBoats); 		//create player
 	player_2 = new Player(numOfBoats);
 	std::cout <<"\nPlayer 1 place your ships\n";
