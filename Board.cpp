@@ -108,6 +108,17 @@ std::string Board::randPosGen()
 	result +=(char)rand_Num_Coord;
 	return(result);
 }
+bool Board::isShipPos(int row, int col)
+{
+	if(myBoard[row][col] == "\033[1;32m∆\033[0m")
+	{
+			return(true);
+	}
+	else
+	{
+		return(false);
+	}
+}
 ////////////////####################OLD_CODE###############################################
 Board::Board(int shipnum)
 {

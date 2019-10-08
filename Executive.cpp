@@ -288,7 +288,8 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 						}
 					if(ai_Difficulty == 3) // Hard AI shot mechanics go here
 						{
-
+							cout<< "\nAI SHOT: " << hardAiShot(player_1->getBoard());
+								guess = hardAiShot(player_1->getBoard());
 						}
 					}
 				}
@@ -324,7 +325,6 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 	{
 		player_2->getBoard()->printShotBoard();
 		player_2->getBoard()->printMyBoard();
-
 		std::cout << "PLAYER 2 WINS!\n";
 	}
 	else
@@ -336,7 +336,31 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 	}
 
 }
-
+std::string Executive::hardAiShot(Board* playerBoard)
+{
+	std::string shot = "";
+	bool foundShip = false;
+	int row = 0;
+	int col = 0;
+	while(foundShip == false)
+	{
+			if(playerBoard->isShipPos(row,col))
+			{
+					foundShip = true;
+					row += 49;
+					col += 65;
+					shot = (char)col;
+					shot += (char)row;
+					return(shot);
+			}
+			col++;
+			if(col == 8)
+			{
+				row++;
+				col = 0;
+			}
+	}
+}
 
 ////////////////###########################################################################
 ////////////////####################OLD_CODE###############################################

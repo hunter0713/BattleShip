@@ -65,7 +65,7 @@ public:
 	*	@post starts game with AI opponent
 	*/
 	void AIgame();
-
+std::string hardAiShot(Board* playerBoard);
 private:
 	bool start;
 	int menuChoice;

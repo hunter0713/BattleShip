@@ -61,7 +61,7 @@ public:
 	*	@return: - The String containing the randomly generated coordinate.
 	*/
 	std::string randPosGen();
-
+bool isShipPos(int row, int col);
 	////////////////////////////OLD_CODE//////////////////////////
 	std::string shotBoard[8][8];
 	/**
