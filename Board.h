@@ -9,7 +9,16 @@
 * \Brief:  File is header file
 * \copyright: Group "Big SegFault Energy" All rights reserved
 */
-
+/**
+* \Author: Hunter Cobb
+* \Author: Zackariah Khazraeinazmpour
+* \Author: Brandon Wheat
+* \Author: Justin Khounsombath
+* \Author: William Burdick
+* \File:	 Board.h
+* \Date:   10/20/2019
+* \Brief:  Class that acts as the data structure for ships and player shots.
+*/
 #ifndef BOARD_H
 #define BOARD_H
 

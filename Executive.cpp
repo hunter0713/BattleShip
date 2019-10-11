@@ -9,7 +9,16 @@
 * \Brief:  File is cpp file
 * \copyright: Group "Big SegFault Energy" All rights reserved
 */
-
+/**
+* \Author: Hunter Cobb
+* \Author: Zackariah Khazraeinazmpour
+* \Author: Brandon Wheat
+* \Author: Justin Khounsombath
+* \Author: William Burdick
+* \File:	 Executive.cpp
+* \Date:   10/20/2019
+* \Brief:  Executive file where majority of game is run. Added AI game and AI turns.
+*/
 #include "Executive.h"
 #include <limits>
 #include "algorithm" //for toupper
@@ -367,6 +376,7 @@ std::string Executive::hardAiShot(Board* playerBoard)
 				col = 0;
 			}
 	}
+	return(shot);
 }
 
 
