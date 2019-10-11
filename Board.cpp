@@ -120,6 +120,23 @@ bool Board::isShipPos(int row, int col)
 		return(false);
 	}
 }
+
+void Board::setShipsLeft(int tempNum, bool sunk)
+{
+	if(sunk == false)
+		{
+			shipsLeft = tempNum;
+		}
+	else if(sunk == true)
+	{
+		shipsLeft--;
+	}
+}
+
+int Board::getShipsLeft() const
+{
+	return shipsLeft;
+}
 ////////////////####################OLD_CODE###############################################
 Board::Board(int shipnum)
 {
@@ -232,7 +249,6 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player's 
 					if(m_ship[i].isSunk())	//then, we check if it has an amount of damage counters equal to its length, meaning it has been sunk
 					{
 						std::cout << "BATTLESHIP SUNK!!!\n";	//prints that the ship has been sunk
-						setShipsLeft(shipsLeft-1);
 					}
 					break;	//we can break since we found the indices of the userGuess location ship
 				}
@@ -521,15 +537,6 @@ int Board::getNumberofShips() const	//returns the number of ships
 	return numberOfShips;
 }
 
-void Board::setShipsLeft(int tempNum)
-{
-	shipsLeft= tempNum;
-}
-
-int Board::getShipsLeft() const
-{
-	return shipsLeft;
-}
 
 Ship* Board::getShip() const	//returns m_ship
 {

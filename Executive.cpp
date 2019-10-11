@@ -125,6 +125,9 @@ else if(menuChoice == 1)
 		//error catching somehow
 	}
 }
+player_1->getBoard()->setShipsLeft(numOfBoats, false);
+player_2->getBoard()->setShipsLeft(numOfBoats, false);
+
 }
 
 Executive::~Executive()		//Executive destructor
@@ -366,6 +369,8 @@ std::string Executive::hardAiShot(Board* playerBoard)
 	}
 }
 
+
+
 ////////////////###########################################################################
 ////////////////####################OLD_CODE###############################################
 ////////////////###########################################################################
@@ -384,6 +389,8 @@ void Executive::shoot(std::string location)
 		{
 			if(player_2->getBoard()->getShip()[i].isSunk())
 			{
+				player_2->getBoard()->setShipsLeft(0, true);
+				cout << "Player 2, you have " << player_2->getBoard()->getShipsLeft() << " Ships left!";
 				m_gameOver = true;	//sets to true if they are sunk
 			}
 			else
@@ -404,6 +411,8 @@ void Executive::shoot(std::string location)
 		{
 			if(player_1->getBoard()->getShip()[i].isSunk())
 			{
+				player_1->getBoard()->setShipsLeft(0,true);
+				cout << "Player 1, you have " << player_1->getBoard()->getShipsLeft() << " Ships left!";
 				m_gameOver = true;	//sets to true if they are sunk
 			}
 			else
@@ -414,4 +423,3 @@ void Executive::shoot(std::string location)
 		}
 	}
 }
-
