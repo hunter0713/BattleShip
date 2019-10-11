@@ -9,7 +9,16 @@
 * \Brief:  File is header file
 * \copyright: Group "Big SegFault Energy" All rights reserved
 */
-
+/**
+* \Author: Hunter Cobb
+* \Author: Zackariah Khazraeinazmpour
+* \Author: Brandon Wheat
+* \Author: Justin Khounsombath
+* \Author: William Burdick
+* \File:	 Ship.h
+* \Date:   10/20/2019
+* \Brief:  Ship header file defining all characteristics of ships as an object.
+*/
 #ifndef SHIP_H
 #define SHIP_H
 
