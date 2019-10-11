@@ -102,7 +102,7 @@ else{
 }
 
 }
-printMyBoard();//to test if AI correctly places ships
+//printMyBoard();//to test if AI correctly places ships
 std::cout << "Press Enter to Start Game: ";
 
 std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
@@ -227,15 +227,6 @@ void Board::printMyBoard()	//prints the current player's board
 	}
 }
 
-void Board::printIntermission()	//prints the intermission screen so player's can swap turns
-{
-	for(int i=0;i<40;i++)
-	{
-		std::cout << "\n\n\n\n\n\n";	//prints a lot of newlines to add blank space so that player's can swap turns without seeing each other's boards
-	}
-	std::cout << "When ready, please press Enter: ";
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');	//takes in input of the user, basically ignoring any input so that the user can type anything
-}
 
 bool Board::updateMyBoard(std::string userGuess)	//updates the current player's board
 {
@@ -413,7 +404,7 @@ void Board::setupBoard()	//sets up the board
 					m_ship[i].setCoordinate(userGuess, 0);	//sets the element in the m_ship array to the location string (eg. "A1", "B4"), and passes in the index as 0
 					printMyBoard();	//prints the newly updated board
 
-
+					cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		}
 		else
 		{
@@ -496,6 +487,7 @@ void Board::setupBoard()	//sets up the board
 																					//so, when then override temp[1] to 2, hence traversing the rows
 
 							}
+							cout << "\n\n\n\n\n\n\n\n\n\n\n";
 							printMyBoard();	//prints the updated board
 
 							validLocation = true;	//sets valid location to true to help break out of loop
@@ -524,14 +516,9 @@ void Board::setupBoard()	//sets up the board
 			}while(!HorV);	//runs until the user has inputed "H" or "h" or "V" or "v". Also, there are checks to insure that the location was valid first as well, before getting to this point
 
 
-		}	printIntermission();
+		}
 
 	}
-	std::cout << "Press Enter to go to the next Player's turn: ";
-
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //basically lets the user type in anything, ignoring their input
-	printIntermission();	//prints the intermission screen
-
 
 
 }

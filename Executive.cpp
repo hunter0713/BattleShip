@@ -59,9 +59,22 @@ int Executive::boatCheck() //will return numOfBoats when valid
 
 Executive::Executive()		//Executive constructor
 {
+  cout<<"==================================================================================================================================\n";
+	cout<<" ▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄            ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄ \n";
+	cout<<"▐░░░░░░░░░░▌ ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌          ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n";
+	cout<<"▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌ ▀▀▀▀█░█▀▀▀▀  ▀▀▀▀█░█▀▀▀▀ ▐░▌          ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░▌       ▐░▌ ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌\n";
+	cout<<"▐░▌       ▐░▌▐░▌       ▐░▌     ▐░▌          ▐░▌     ▐░▌          ▐░▌          ▐░▌          ▐░▌       ▐░▌     ▐░▌     ▐░▌       ▐░▌\n";
+	cout<<" ░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌     ▐░▌          ▐░▌     ▐░▌          ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌     ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌\n";
+	cout<<"▐░░░░░░░░░░▌ ▐░░░░░░░░░░░▌     ▐░▌          ▐░▌     ▐░▌          ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌     ▐░▌     ▐░░░░░░░░░░░▌\n";
+	cout<<"▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌     ▐░▌          ▐░▌     ▐░▌          ▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌     ▐░▌     ▐░█▀▀▀▀▀▀▀▀▀ \n";
+	cout<<"▐░▌       ▐░▌▐░▌       ▐░▌     ▐░▌          ▐░▌     ▐░▌          ▐░▌                    ▐░▌▐░▌       ▐░▌     ▐░▌     ▐░▌          \n";
+	cout<<"▐░█▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌     ▐░▌          ▐░▌     ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌ ▄▄▄▄█░█▄▄▄▄ ▐░▌          \n";
+	cout<<"▐░░░░░░░░░░▌ ▐░▌       ▐░▌     ▐░▌          ▐░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌          \n";
+	cout<<" ▀▀▀▀▀▀▀▀▀▀   ▀         ▀       ▀            ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀           \n";
+	cout<<"==================================================================================================================================\n";
+
 	start = false;
 	menuChoice =0;
-	std::cout << "Welcome to BattleShip!\n";
 	while(start!=true)
 	{
 			std::cout<<"Please Choose Game Mode:\n" << "1.) Single Player vs AI\n2.) 2-Player\n>> ";
@@ -96,8 +109,12 @@ Executive::Executive()		//Executive constructor
 	m_player_1Turn = 1;			//m_player_1Turn member boolean set to 1, game starts with player 1's turn
 
 	std::cout <<"\nPlayer 1 place your ships\n";		//prompt player1 to place their ships
-	player_1 -> getBoard() -> setupBoard();					//call getBoard and setupBoard from board.cpp to create the two boards for player1
+	player_1 -> getBoard() -> setupBoard();
+	std::cout << "Press Enter to go to the next Player's turn: ";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //basically lets the user type in anything, ignoring their input
 	std::cout <<"\nPlayer 2 place your ships\n";		//promt player2 to place their ships
+	//std::cout << "Press Enter to go to the next Player's turn: ";
+	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 	player_2 -> getBoard() -> setupBoard();					//call getBoard and setupBoard from board.cpp to create the two boards for player2
 	game();		//call Executive game function to start the game once both players have set up their boards
 }
@@ -112,19 +129,19 @@ else if(menuChoice == 1)
 	////////////Start AI game/////////////////////////
 	if(ai_Difficulty == 1)
 	{
-		cout << "Setting up easy AI" << endl;
+		cout << "Setting up easy AI..." << endl;
 		player_2 -> getBoard() -> setupBoard_AI();
 		AIgame();
 	}
 	else if(ai_Difficulty == 2)
 	{
-		cout << "Setting up normal AI" << endl;
+		cout << "Setting up normal AI..." << endl;
 		player_2 -> getBoard() -> setupBoard_AI();
    //normal difficulty
 	}
 	else if(ai_Difficulty == 3)
 	{
-		cout << "Setting up hard AI" << endl;
+		cout << "Setting up hard AI..." << endl;
 		player_2 -> getBoard() -> setupBoard_AI();
 		AIgame();
 		//hard difficulty
@@ -167,13 +184,12 @@ void Executive::game()
 
 					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);	//converts guess to uppercase
 
-					std::cout << "guess: " << guess << "\n"; //print out user's guess
+				//	std::cout << "guess: " << guess << "\n"; //print out user's guess
 
 					if(guess.length() != 2)
 					{
 						std::cout << "Invalid coordinate! Try again.\n"; //error if user inputs a string which length is not 2
 					}
-
 				}
 				else	//if it is player 2's turn
 				{
@@ -195,7 +211,7 @@ void Executive::game()
 			}
 
 			shoot(guess); //shoot the location as user demand
-
+			//printIntermission();
 			if(m_player_1Turn % 2 == 1 && !m_gameOver) //if it is player 1's turn
 			{
 
@@ -205,8 +221,9 @@ void Executive::game()
 
 				std::cout <<"Player 1 please hit enter and let other player shoot at your ships in secret: "; //print the board for checking hit or not and hit eneter for next player's turn
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
-
-				player_1->getBoard()->printIntermission();
+				cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+				printIntermission();
+				cout<<"\n\n\n\n\n\n\n\n";
 			}
 			else if(m_player_1Turn % 2 == 0 && !m_gameOver)	//if it is player 2's turn
 			{
@@ -216,8 +233,9 @@ void Executive::game()
 
 				std::cout <<"Player 2 please hit enter and let other player shoot at your ships in secret: ";//print the board for checking hit or not and hit eneter for next player's turn
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
-
-				player_2->getBoard()->printIntermission();
+				cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+				printIntermission();
+				cout<<"\n\n\n\n\n\n\n\n";
 			}
 
 			m_player_1Turn++; //change player turn
@@ -252,7 +270,15 @@ void Executive::game()
 ////////////////###########################################################################
 ////////////////####################NEW_CODE###############################################
 ////////////////###########################################################################
-
+void Executive::printIntermission()	//prints the intermission screen so player's can swap turns
+{
+	//for(int i=0;i<40;i++)
+	//{
+		std::cout << "\n\n\n\n\n\n";	//prints a lot of newlines to add blank space so that player's can swap turns without seeing each other's boards
+	//}
+	std::cout << "When ready, please press Enter: ";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');	//takes in input of the user, basically ignoring any input so that the user can type anything
+}
 
 void Executive::AIgame() //Zack: I just copy and pasted the orignal game code and am adding changes for AI turns
 {
@@ -276,7 +302,7 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 
 					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);	//converts guess to uppercase
 
-					std::cout << "guess: " << guess << "\n"; //print out user's guess
+				//	std::cout << "guess: " << guess << "\n"; //print out user's guess
 
 					if(guess.length() != 2)
 					{
@@ -286,8 +312,7 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 				}
 				else	//if it is AI turn
 				{
-					player_2->getBoard()->printShotBoard();
-					player_2->getBoard()->printMyBoard();
+					cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 					std::cout <<"Allowing for AI shot "; //print player's board and opponent's board
 
 					if(ai_Difficulty == 1) //Randomly generates positions for easy AI
@@ -321,7 +346,7 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 			if(m_player_1Turn % 2 == 1 && !m_gameOver) //if it is player 1's turn
 			{
 
-				std::cout << "PLAYER 1 TURN\n";
+				//std::cout << "PLAYER 1 TURN\n";
 				player_1->getBoard()->printShotBoard();
 				player_1->getBoard()->printMyBoard();
 			}

@@ -122,15 +122,6 @@ int getShipsLeft() const;
 	*	@post print the player board
 	*/
 	void printMyBoard();
-
-	/**
-	* @pre none
-	*	@param none
-	*	@post prints a blank screen to hide previous player's board
-	* and asks the current player to press enter before next step
-	*/
-	void printIntermission();
-
 	/**
 	*	private member variable helper function
 	* @pre none
