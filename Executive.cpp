@@ -318,10 +318,11 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 					if(ai_Difficulty == 1) //Randomly generates positions for easy AI
 						{
 							guess = player_2->getBoard()->randPosGen();
+							cout << "AI SHOT: " << guess << endl;
 						}
 					if(ai_Difficulty == 2) //Normal AI shot mechanics go here
 						{
-
+							
 						}
 					if(ai_Difficulty == 3) // Hard AI shot mechanics go here
 						{
