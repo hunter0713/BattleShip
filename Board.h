@@ -62,6 +62,7 @@ public:
 	*/
 	std::string randPosGen();
 bool isShipPos(int row, int col);
+bool isHitPos(int row, int col);
 	////////////////////////////OLD_CODE//////////////////////////
 	std::string shotBoard[8][8];
 	/**
@@ -197,5 +198,7 @@ bool isShipPos(int row, int col);
 	* @return ship object
 	*/
 	Ship* getShip() const;
+	int getShipIndex(std::string aiGuess);//returns ship at location guessed by AI
+	std::string getElement(int row, int col);
 };
 #endif

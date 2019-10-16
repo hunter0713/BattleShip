@@ -111,6 +111,7 @@ else if(menuChoice == 1)
 	{
 		cout << "Setting up normal AI" << endl;
 		player_2 -> getBoard() -> setupBoard_AI();
+		AIgame();
    //normal difficulty
 	}
 	else if(ai_Difficulty == 3)
@@ -284,6 +285,38 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 						}
 					if(ai_Difficulty == 2) //Normal AI shot mechanics go here
 						{
+						std::string prevGuess = player_2->getRecentGuess();
+						if(prevGuess == "")//if first guess
+						{
+							lastHit = "";
+							guess = player_2->getBoard()->randPosGen();//guess random spot
+						}else if(player_1->getBoard()->isHitPos(prevGuess.at(1)-49,(int)prevGuess.at(0)-65)||lastHit!="")//if previous guess was a hits or last ship hit is not sunk
+						{
+							if(player_1->getBoard()->isHitPos(prevGuess.at(1)-49,(int)prevGuess.at(0)-65))
+							{
+								lastHit = prevGuess;
+							}
+							int lastShipHit = player_1->getBoard()->getShipIndex(lastHit);
+							if(player_1->getBoard()->getShip()[lastShipHit].isSunk())// to see if the ship being tracked is sunk
+							{
+								lastHit = "";
+								shipDir = ' ';
+								int numShips = player_1->getBoard()->getNumberofShips();
+								for(int i = 0; i < numShips; i++)//checks every ship to see if damaged but not sunk
+								{
+									if(player_1->getBoard()->getShip()[i].getDamage()>=1 && !(player_1->getBoard()->getShip()[i].isSunk()))//if has damage and not sunk
+									{
+										lastHit = player_1->getBoard()->getShip()[i].getCoordinate(i);//set lastHit to damaged ship
+									}
+								}
+							}
+							guess = mediumAiShot(player_1->getBoard(), prevGuess, lastShipHit);
+							std::string prevGuess = player_2->getRecentGuess();
+						}else
+						{
+							guess = player_2->getBoard()->randPosGen();
+						}
+						player_2->setRecentGuess(guess);
 
 						}
 					if(ai_Difficulty == 3) // Hard AI shot mechanics go here
@@ -336,6 +369,114 @@ void Executive::AIgame() //Zack: I just copy and pasted the orignal game code an
 	}
 
 }
+std::string Executive::mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex)
+{
+	std::string guess = "";
+	if(lastHit == "")//guess randomly if havent hit anything
+	{
+		return(player_2->getBoard()->randPosGen());
+	}
+	int row = (int)lastHit.at(1);
+	int col = (int)lastHit.at(0);
+	if(shipDir == 'h') //if direction is horizontal
+	{
+
+		col = col + 1;
+		guess = (char)col;
+		guess += (char)row;
+		if(player_1->getBoard()->withinBoundary(guess))//guess within boundary
+		{
+			if(player_1->getBoard()->getElement(row-49,col-65)=="\033[1;36m~\033[0m")//if spot on board is blue tilde
+			{
+				return(guess);
+			}else if(player_1->getBoard()->getElement(row-49,col-65)!="\033[1;36m~\033[0m"||!(player_1->getBoard()->withinBoundary(guess)))//if spot on board is not blue tilde or not within boundary
+			{
+				int numShips = player_1->getBoard()->getNumberofShips() - 1;
+				col = col + (rand() % (numShips-(-numShips)+1) + (-numShips));
+				guess = (char)col;
+				guess += (char)row;
+				return(guess);
+			}else
+			{
+				col = col + 2;
+				guess = (char)col;
+				guess += (char)row;
+				return(guess);
+			}
+		}
+	}else if(shipDir == 'v')//if direction is vertical
+	{
+		row = row + 1;
+		guess = (char)col;
+		guess += (char)row;
+		if(player_1->getBoard()->withinBoundary(guess))//guess within boundary
+		{
+			if(player_1->getBoard()->getElement(row-49,col-65)=="\033[1;36m~\033[0m")//if spot on board is blue tilde
+			{
+				return(guess);
+			}else if(player_1->getBoard()->getElement(row-49,col-65)!="\033[1;36m~\033[0m"||!(player_1->getBoard()->withinBoundary(guess)))//if spot on board is not blue tilde or not within boundary
+			{
+				int numShips = player_1->getBoard()->getNumberofShips() - 1;
+				row = row + (rand() % (numShips-(-numShips)+1) + (-numShips));
+				guess = (char)col;
+				guess += (char)row;
+				return(guess);
+			}else
+			{
+				row = row + 2;
+				guess = (char)col;
+				guess += (char)row;
+				return(guess);
+			}
+		}
+	}	else//if ship has only been hit once
+	{
+		int randNum = (rand() % (4-1+1) + 1);
+		if(randNum == 1)//guess right
+		{
+			col = col + 1;
+			guess = (char)col;
+			guess += (char)row;
+			if(player_1->getBoard()->isShipPos(row-49,col-65)&&player_1->getBoard()->getShipIndex(guess)==shipIndex)//if the enemy ship is going horizontally
+			{
+					shipDir = 'h';
+			}
+			return(guess);
+		}else if(randNum == 2)//guess left
+		{
+			col = col - 1;
+			guess = (char)col;
+			guess += (char)row;
+			if(player_1->getBoard()->isShipPos(row-49,col-65)&&player_1->getBoard()->getShipIndex(guess)==shipIndex)//if the enemy ship is going horizontally
+			{
+					shipDir = 'h';
+			}
+			return(guess);
+		}else if(randNum == 3)//guess up
+		{
+			row = row - 1;
+			guess = (char)col;
+			guess += (char)row;
+			if(player_1->getBoard()->isShipPos(row-49,col-65)&&player_1->getBoard()->getShipIndex(guess)==shipIndex)//if the enemy ship is going vertically
+			{
+					shipDir = 'v';
+			}
+			return(guess);
+		}else if(randNum == 4)//guess down
+		{
+			row = row + 1;
+			guess = (char)col;
+			guess += (char)row;
+			if(player_1->getBoard()->isShipPos(row-49,col-65)&&player_1->getBoard()->getShipIndex(guess)==shipIndex)//if the enemy ship is going vertically
+			{
+					shipDir = 'v';
+			}
+			return(guess);
+		}
+	}
+	return(player_2->getBoard()->randPosGen());
+}
+
 std::string Executive::hardAiShot(Board* playerBoard)
 {
 	std::string shot = "";

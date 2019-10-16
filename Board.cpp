@@ -119,6 +119,23 @@ bool Board::isShipPos(int row, int col)
 		return(false);
 	}
 }
+bool Board::isHitPos(int row, int col)
+{
+	if(myBoard[row][col] == "\033[1;31mX\033[0m")
+	{
+
+			return(true);
+	}
+	else
+	{
+		return(false);
+	}
+}
+
+std::string Board::getElement(int row, int col)
+{
+	return(myBoard[row][col]);
+}
 ////////////////####################OLD_CODE###############################################
 Board::Board(int shipnum)
 {
@@ -533,4 +550,19 @@ int Board::getShipsLeft() const
 Ship* Board::getShip() const	//returns m_ship
 {
 	return m_ship;
+}
+
+int Board::getShipIndex(std::string aiGuess)//returns index of ship
+{
+	for(int i = 0; i < numberOfShips; i++)	//searches through each ship, at the length of each ship, until it finds the correct index holding the userGuess location
+	{
+		for(int j = 0; j < m_ship[i].getLength(); j++)
+		{
+			if(m_ship[i].getCoordinate(j) == aiGuess)
+			{
+
+				return(i);	//add damage counter to that ship
+			}
+		}
+	}
 }

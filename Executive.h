@@ -65,6 +65,7 @@ public:
 	*	@post starts game with AI opponent
 	*/
 	void AIgame();
+std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex);
 std::string hardAiShot(Board* playerBoard);
 private:
 	bool start;
@@ -74,5 +75,7 @@ private:
 	int m_player_1Turn; //true if player1 turn, false if player2 turn
 	bool m_gameOver;	//game over to stop the while loop once the game ends
 	int ai_Difficulty;
+	std::string lastHit;//last guess that ressulted in a hit
+	char shipDir;//direction of enemy ship - 'h' Horizontal 'v' vertical 
 };
 #endif
