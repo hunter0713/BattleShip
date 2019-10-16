@@ -9,7 +9,16 @@
 * \Brief:  File is header file
 * \copyright: Group "Big SegFault Energy" All rights reserved
 */
-
+/**
+* \Author: Hunter Cobb
+* \Author: Zackariah Khazraeinazmpour
+* \Author: Brandon Wheat
+* \Author: Justin Khounsombath
+* \Author: William Burdick
+* \File:	 Board.h
+* \Date:   10/20/2019
+* \Brief:  Class that acts as the data structure for ships and player shots.
+*/
 #ifndef BOARD_H
 #define BOARD_H
 
@@ -38,7 +47,7 @@ private:
 	*	@post converts userGuess to two array indices, updating rowIndex and columnIndex
 	*/
 	void guessConversion(std::string userGuess);
-	int shipsLeft;
+	int shipsLeft = numberOfShips;
 	std::string blueTilde;
 	std::string redHit;
 	std::string whiteMiss;
@@ -62,7 +71,28 @@ public:
 	*/
 	std::string randPosGen();
 bool isShipPos(int row, int col);
+
 bool isHitPos(int row, int col);
+
+
+
+/**
+*	private member variable helper function
+* @pre none
+*	@param takes a int for number of ships
+*	@post change private member variable shipsLeft to tempNum
+*/
+void setShipsLeft(int tempNum, bool sunk);
+
+/**
+*	private member variable helper function
+* @pre none
+*	@param none
+*	@post get private member variable shipsLeft
+* @return number of Ships left
+*/
+int getShipsLeft() const;
+
 	////////////////////////////OLD_CODE//////////////////////////
 	std::string shotBoard[8][8];
 	/**
@@ -97,15 +127,6 @@ bool isHitPos(int row, int col);
 	*	@post print the player board
 	*/
 	void printMyBoard();
-
-	/**
-	* @pre none
-	*	@param none
-	*	@post prints a blank screen to hide previous player's board
-	* and asks the current player to press enter before next step
-	*/
-	void printIntermission();
-
 	/**
 	*	private member variable helper function
 	* @pre none
@@ -123,22 +144,7 @@ bool isHitPos(int row, int col);
 	*/
 	int getNumberofShips() const;
 
-	/**
-	*	private member variable helper function
-	* @pre none
-	*	@param takes a int for number of ships
-	*	@post change private member variable shipsLeft to tempNum
-	*/
-	void setShipsLeft(int tempNum);
 
-	/**
-	*	private member variable helper function
-	* @pre none
-	*	@param none
-	*	@post get private member variable shipsLeft
-	* @return number of Ships left
-	*/
-	int getShipsLeft() const;
 
 	/**
 	* @pre none

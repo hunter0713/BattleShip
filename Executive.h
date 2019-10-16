@@ -9,7 +9,16 @@
 * \Brief:  File is header file
 * \copyright: Group "Big SegFault Energy" All rights reserved
 */
-
+/**
+* \Author: Hunter Cobb
+* \Author: Zackariah Khazraeinazmpour
+* \Author: Brandon Wheat
+* \Author: Justin Khounsombath
+* \Author: William Burdick
+* \File:	 Executive.h
+* \Date:   10/20/2019
+* \Brief:  Header file for Executive class that handles game loops.
+*/
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 
@@ -65,7 +74,12 @@ public:
 	*	@post starts game with AI opponent
 	*/
 	void AIgame();
+
 std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex);
+
+
+	void printIntermission();
+
 std::string hardAiShot(Board* playerBoard);
 private:
 	bool start;

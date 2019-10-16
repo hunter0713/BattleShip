@@ -9,7 +9,16 @@
 * \Brief:  File is cpp file
 * \copyright: Group "Big SegFault Energy" All rights reserved
 */
-
+/**
+* \Author: Hunter Cobb
+* \Author: Zackariah Khazraeinazmpour
+* \Author: Brandon Wheat
+* \Author: Justin Khounsombath
+* \Author: William Burdick
+* \File:	 Board.cpp
+* \Date:   10/20/2019
+* \Brief:  Class that acts as the data structure for ships and player shots.
+*/
 #include "Board.h"
 #include <sstream>
 #include <limits>
@@ -23,6 +32,7 @@ std::string ai_Placement = "";
 int rand_Orientation_Num = 0; //FOR_RANDOM_NUMBER_GENERATION(1 or 2) FOR ORIENTATION (rand()%2;)
 std::string orientationHorV = "";
 m_ship =  new Ship[numberOfShips];
+shipsLeft= numberOfShips;
 bool validLoc = false;
 std::string temp;
 for(int i = 0; i < numberOfShips; i++)
@@ -92,7 +102,7 @@ else{
 }
 
 }
-printMyBoard();//to test if AI correctly places ships
+//printMyBoard();//to test if AI correctly places ships
 std::cout << "Press Enter to Start Game: ";
 
 std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
@@ -119,6 +129,7 @@ bool Board::isShipPos(int row, int col)
 		return(false);
 	}
 }
+
 bool Board::isHitPos(int row, int col)
 {
 	if(myBoard[row][col] == "\033[1;31mX\033[0m")
@@ -136,6 +147,26 @@ std::string Board::getElement(int row, int col)
 {
 	return(myBoard[row][col]);
 }
+
+
+
+void Board::setShipsLeft(int tempNum, bool sunk)
+{
+	if(sunk == false)
+		{
+			shipsLeft = tempNum;
+		}
+	else if(sunk == true)
+	{
+		shipsLeft--;
+	}
+}
+
+int Board::getShipsLeft() const
+{
+	return shipsLeft;
+}
+
 ////////////////####################OLD_CODE###############################################
 Board::Board(int shipnum)
 {
@@ -217,15 +248,6 @@ void Board::printMyBoard()	//prints the current player's board
 	}
 }
 
-void Board::printIntermission()	//prints the intermission screen so player's can swap turns
-{
-	for(int i=0;i<40;i++)
-	{
-		std::cout << "\n\n\n\n\n\n";	//prints a lot of newlines to add blank space so that player's can swap turns without seeing each other's boards
-	}
-	std::cout << "When ready, please press Enter: ";
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');	//takes in input of the user, basically ignoring any input so that the user can type anything
-}
 
 bool Board::updateMyBoard(std::string userGuess)	//updates the current player's board
 {
@@ -248,7 +270,6 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player's 
 					if(m_ship[i].isSunk())	//then, we check if it has an amount of damage counters equal to its length, meaning it has been sunk
 					{
 						std::cout << "BATTLESHIP SUNK!!!\n";	//prints that the ship has been sunk
-						setShipsLeft(shipsLeft-1);
 					}
 					break;	//we can break since we found the indices of the userGuess location ship
 				}
@@ -404,7 +425,7 @@ void Board::setupBoard()	//sets up the board
 					m_ship[i].setCoordinate(userGuess, 0);	//sets the element in the m_ship array to the location string (eg. "A1", "B4"), and passes in the index as 0
 					printMyBoard();	//prints the newly updated board
 
-
+					cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		}
 		else
 		{
@@ -487,6 +508,7 @@ void Board::setupBoard()	//sets up the board
 																					//so, when then override temp[1] to 2, hence traversing the rows
 
 							}
+							cout << "\n\n\n\n\n\n\n\n\n\n\n";
 							printMyBoard();	//prints the updated board
 
 							validLocation = true;	//sets valid location to true to help break out of loop
@@ -515,14 +537,9 @@ void Board::setupBoard()	//sets up the board
 			}while(!HorV);	//runs until the user has inputed "H" or "h" or "V" or "v". Also, there are checks to insure that the location was valid first as well, before getting to this point
 
 
-		}	printIntermission();
+		}
 
 	}
-	std::cout << "Press Enter to go to the next Player's turn: ";
-
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //basically lets the user type in anything, ignoring their input
-	printIntermission();	//prints the intermission screen
-
 
 
 }
@@ -537,15 +554,6 @@ int Board::getNumberofShips() const	//returns the number of ships
 	return numberOfShips;
 }
 
-void Board::setShipsLeft(int tempNum)
-{
-	shipsLeft= tempNum;
-}
-
-int Board::getShipsLeft() const
-{
-	return shipsLeft;
-}
 
 Ship* Board::getShip() const	//returns m_ship
 {
