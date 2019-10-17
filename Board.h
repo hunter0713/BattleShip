@@ -36,24 +36,24 @@
 class Board
 {
 private:
-	std::string myBoard[8][8];
-	std::string m_rowNames = "ABCDEFGH";
-	std::string m_columnNames = "12345678";
-	int m_rowIndex;
-	int m_columnIndex;
+	std::string myBoard[8][8]; /**Board Containing the ships of a player*/
+	std::string m_rowNames = "ABCDEFGH"; /**row axis labels*/
+	std::string m_columnNames = "12345678";/**column axis labels*/
+	int m_rowIndex;/**keeps track of row index*/
+	int m_columnIndex;/**keeps track of column index*/
 	/**
 	* @pre none
 	*	@param takes a location string from user
 	*	@post converts userGuess to two array indices, updating rowIndex and columnIndex
 	*/
 	void guessConversion(std::string userGuess);
-	int shipsLeft = numberOfShips;
-	std::string blueTilde;
-	std::string redHit;
-	std::string whiteMiss;
+	int shipsLeft = numberOfShips;/**number of ships left in the game*/
+	std::string blueTilde;/**character representing water*/
+	std::string redHit;/**character representing a hit*/
+	std::string whiteMiss;/**character representing a miss*/
 	std::string ship;
-	int numberOfShips;
-	Ship* m_ship = nullptr;
+	int numberOfShips;/**keeps track of number of ships in game*/
+	Ship* m_ship = nullptr;/**m_ship pointer*/
 
 public:
 	/////////////////////////NEW_CODE//////////////////////////////
@@ -70,9 +70,20 @@ public:
 	*	@return: - The String containing the randomly generated coordinate.
 	*/
 	std::string randPosGen();
-bool isShipPos(int row, int col);
-
-bool isHitPos(int row, int col);
+	/**
+	* @pre none
+	*	@param row: - row of position to check
+		@param col: - col of position to check
+	*	@return: - whether or not the position is a ship
+	*/
+	bool isShipPos(int row, int col);
+	/**
+	* @pre none
+	*	@param row: - row of position to check
+		@param col: - col of position to check
+	*	@return: - whether or not the position is a hit
+	*/
+	bool isHitPos(int row, int col);
 
 
 

@@ -33,9 +33,9 @@
 class Ship
 {
 private:
-std::string* m_ship;
-int m_length;
-int m_damage;
+std::string* m_ship;/**front of ship*/
+int m_length;/**length of the ship*/
+int m_damage;/**damage on ship*/
 
 public:
   /**

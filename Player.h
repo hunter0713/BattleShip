@@ -33,9 +33,9 @@ class Player
 {
 private:
 
-  Board* m_board = nullptr;
-  std::string recentguess;
-  int numOfShips;
+  Board* m_board = nullptr;/**board pointer for the player*/
+  std::string recentguess; /**most recent guess*/
+  int numOfShips; /**number of ships for each player*/
 
 public:
   /**

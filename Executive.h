@@ -74,22 +74,36 @@ public:
 	*	@post starts game with AI opponent
 	*/
 	void AIgame();
-
+	/**
+	* @pre none
+	*	@param playerBoard: - ai board being passed to the function for shot
+	*	@param prevShot: - stored previous shot
+	* 	@param shipIndex: - index of last hit that was a ship
+	*	@return: - shot to be played for medium ai
+	*/
 std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex);
-
+	/**
+	* @pre none
+	*	@param none
+	*	@post prints intermission screen for gameplay 
+	*/
 
 	void printIntermission();
-
-std::string hardAiShot(Board* playerBoard);
+	/**
+	* @pre none
+	*	@param playerBoard: - the board of the player being passed to the ai to allow for "cheat mode"
+	*	@return: - the shot for the hard ai to play
+	*/
+	std::string hardAiShot(Board* playerBoard);
 private:
 	bool start;
 	int menuChoice;
-	Player* player_1;		//player object for player1
-	Player* player_2;		//player object for player2
-	int m_player_1Turn; //true if player1 turn, false if player2 turn
-	bool m_gameOver;	//game over to stop the while loop once the game ends
-	int ai_Difficulty;
-	std::string lastHit;//last guess that ressulted in a hit
-	char shipDir;//direction of enemy ship - 'h' Horizontal 'v' vertical 
+	Player* player_1;		/**player object for player1*/
+	Player* player_2;		/**player object for player2*/
+	int m_player_1Turn; /**true if player1 turn, false if player2 turn*/
+	bool m_gameOver;	/**game over to stop the while loop once the game ends*/
+	int ai_Difficulty;     /**keeps track of difficulty*/
+	std::string lastHit;/**last guess that ressulted in a hit*/
+	char shipDir;/**direction of enemy ship - 'h' Horizontal 'v' vertical */
 };
 #endif
