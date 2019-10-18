@@ -270,6 +270,8 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player's 
 					if(m_ship[i].isSunk())	//then, we check if it has an amount of damage counters equal to its length, meaning it has been sunk
 					{
 						std::cout << "BATTLESHIP SUNK!!!\n";	//prints that the ship has been sunk
+						shipsLeft--;
+						std::cout << "They have "<<shipsLeft<<" ships left\n";
 					}
 					break;	//we can break since we found the indices of the userGuess location ship
 				}

@@ -47,7 +47,7 @@ private:
 	*	@post converts userGuess to two array indices, updating rowIndex and columnIndex
 	*/
 	void guessConversion(std::string userGuess);
-	int shipsLeft = numberOfShips;/**number of ships left in the game*/
+	int shipsLeft;/**number of ships left in the game*/
 	std::string blueTilde;/**character representing water*/
 	std::string redHit;/**character representing a hit*/
 	std::string whiteMiss;/**character representing a miss*/
