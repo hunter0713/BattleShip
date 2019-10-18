@@ -86,7 +86,7 @@ std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex
 	/**
 	* @pre none
 	*	@param none
-	*	@post prints intermission screen for gameplay 
+	*	@post prints intermission screen for gameplay
 	*/
 
 	void printIntermission();
@@ -97,6 +97,8 @@ std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex
 	*/
 	std::string hardAiShot(Board* playerBoard);
 	void explosionAnimation();
+	void printWinnerP1();
+	void printWinnerP2();
 private:
 	bool start;
 	int menuChoice;
