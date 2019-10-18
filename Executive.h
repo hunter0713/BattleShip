@@ -25,6 +25,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
 #include "Player.h"		//include player to utilize player objects
 using namespace std;
 
@@ -95,6 +96,7 @@ std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex
 	*	@return: - the shot for the hard ai to play
 	*/
 	std::string hardAiShot(Board* playerBoard);
+	void explosionAnimation();
 private:
 	bool start;
 	int menuChoice;
