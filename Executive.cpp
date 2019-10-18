@@ -76,7 +76,6 @@ Executive::Executive()		//Executive constructor
 	start = false;
 	menuChoice =0;
 	int numOfBoats = 0;		//int numOfBoats to store the number of boats
-
 	try
 	{
 		numOfBoats = boatCheck();		//try block to set Executive constructor's numOfBoats to the value returned by boatCheck
@@ -85,10 +84,11 @@ Executive::Executive()		//Executive constructor
 	{
 		std::cout << "Invalid number of ships";		//print error message if the function fails
 	}
-	while(start!=true)
-	{
+		
 			std::cout<<"Please Choose Game Mode:\n" << "1.) Single Player vs AI\n2.) 2-Player\n>> ";
 			std::cin >> menuChoice;
+				
+			
 			if(menuChoice == 2)
 			{
 				start = true;
@@ -98,9 +98,26 @@ Executive::Executive()		//Executive constructor
 				start =  true;
 				std::cout <<"Now choose difficulty(1-3): ";
 				std::cin >> ai_Difficulty;
+				while(ai_Difficulty != 1 && ai_Difficulty != 2 && ai_Difficulty != 3)
+				{
+					std::cin.clear();
+					std::cin.ignore(1);
+					std::cout <<"Now choose difficulty(1-3): ";
+					std::cin >> ai_Difficulty;	
+				}
+			}	
+			else
+			{
+				while(menuChoice != 1 && menuChoice != 2)
+				{
+				std::cin.clear();
+				std::cin.ignore(1);
+				std::cout<<"Please Choose Game Mode:\n" << "1.) Single Player vs AI\n2.) 2-Player\n>> ";
+				std::cin >> menuChoice;
+				}
 			}
 
-	}
+	
 	if(menuChoice == 2)
 	{
 	player_1 = new Player(numOfBoats); 		//create player 1 object passing in the number of boats
