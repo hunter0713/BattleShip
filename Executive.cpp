@@ -73,7 +73,6 @@ Executive::Executive()		//Executive constructor
 	cout<<" ▀▀▀▀▀▀▀▀▀▀   ▀         ▀       ▀            ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀           \n";
 	cout<<"==================================================================================================================================\n";
 
-	explosionAnimation();
 	start = false;
 	menuChoice =0;
 	int numOfBoats = 0;		//int numOfBoats to store the number of boats
@@ -571,8 +570,6 @@ std::string Executive::hardAiShot(Board* playerBoard)
 	}
 	return(shot);
 }
-
-<<<<<<< HEAD
 void Executive::explosionAnimation()
 {
 	system("clear");
@@ -824,9 +821,7 @@ cout << "                                  \n";
 usleep(1000000);
 system("clear");
 }
-||||||| merged common ancestors
 
-=======
 void Executive::printWinnerP1()
 {
 	cout << " ____      ____  _____  ____  _____  ____  _____  ________  _______      _______  _____          _     ____  ____  ________  _______        ___   ____  _____  ________  " << endl;
@@ -857,7 +852,6 @@ void Executive::printWinnerP2()
 	cout << "     \\/  \\/     |_____||_____|\\____||_____|\\____||________||____| |___| |_____|  |________||____| |____||______|  |________||____| |___|   |_____|       \\/  \\/     `.___.'  " << endl;
 }
 
->>>>>>> 98e8b9f155e78d913fa38379dd946b0da91d7ab2
 
 ////////////////###########################################################################
 ////////////////####################OLD_CODE###############################################
@@ -871,6 +865,8 @@ void Executive::shoot(std::string location)
 	if(m_player_1Turn % 2 == 1)
 	{
 		hit = player_2->gettingShot(location); //check player_2 has a ship at the location or not
+		if(hit)
+			explosionAnimation();
 		player_1->shooting(location,hit); //update hit marker for player_1
 
 		for(int i=0;i<numberOfShips;i++)	//checks for game over
@@ -892,6 +888,8 @@ void Executive::shoot(std::string location)
 	else
 	{
 		hit = player_1->gettingShot(location); //check player_1 has a ship at the location or not
+		if(hit)
+			explosionAnimation();
 		player_2->shooting(location,hit); //update hit marker for player_2
 
 		for(int i=0;i<numberOfShips;i++)	//checks for game over
@@ -909,3 +907,4 @@ void Executive::shoot(std::string location)
 		}
 	}
 }
+
