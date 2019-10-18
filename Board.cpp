@@ -16,7 +16,7 @@
 * \Author: Justin Khounsombath
 * \Author: William Burdick
 * \File:	 Board.cpp
-* \Date:   10/20/2019
+* \Date:   10/20/2019s
 * \Brief:  Class that acts as the data structure for ships and player shots.
 */
 #include "Board.h"
@@ -167,6 +167,23 @@ int Board::getShipsLeft() const
 	return shipsLeft;
 }
 
+void Board::printShipSunk()
+		{
+			cout << "   .---. .-. .-.,-.,---.      .---. .-. .-..-. .-.,-. .-. " << endl;
+		  usleep(200000);
+		  cout << "  ( .-._)| | | ||(|| .-.\\    ( .-._)| | | ||  \\| || |/ /  " << endl;
+		  usleep(200000);
+		  cout << " (_) \\   | `-' |(_)| |-' )  (_) \\   | | | ||   | || | /   " << endl;
+		  usleep(200000);
+		  cout << " _  \\ \\  | .-. || || |--'   _  \\ \\  | | | || |\\  || | \\   " << endl;
+		  usleep(200000);
+		  cout << "( `-'  ) | | |)|| || |     ( `-'  ) | `-')|| | |)|| |) \\  " << endl;
+		  usleep(200000);
+		  cout << " `----'  /(  (_)`-'/(       `----'  `---(_)/(  (_)|((_)-' " << endl;
+		  usleep(200000);
+		  cout << "        (__)      (__)                    (__)    (_)     " << endl;
+
+		}
 ////////////////####################OLD_CODE###############################################
 Board::Board(int shipnum)
 {
@@ -190,6 +207,7 @@ Board::~Board()	//destructor to delete m_ship
 {
 	delete[] m_ship;
 }
+
 
 void Board::printShotBoard()	//prints the current player's view of their opponents side. Aka what they are shooting at
 {
@@ -269,7 +287,7 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player's 
 					m_ship[i].addDamage();	//add damage counter to that ship
 					if(m_ship[i].isSunk())	//then, we check if it has an amount of damage counters equal to its length, meaning it has been sunk
 					{
-						std::cout << "BATTLESHIP SUNK!!!\n";	//prints that the ship has been sunk
+						printShipSunk();	//prints that the ship has been sunk
 						shipsLeft--;
 						std::cout << "They have "<<shipsLeft<<" ships left\n";
 					}

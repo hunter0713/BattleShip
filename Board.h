@@ -25,6 +25,7 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include <unistd.h>
 #include "Ship.h"
 #include "algorithm"
 
@@ -103,6 +104,8 @@ void setShipsLeft(int tempNum, bool sunk);
 * @return number of Ships left
 */
 int getShipsLeft() const;
+
+void printShipSunk();
 
 	////////////////////////////OLD_CODE//////////////////////////
 	std::string shotBoard[8][8];
