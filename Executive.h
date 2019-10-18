@@ -21,10 +21,11 @@
 */
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
-#include <unistd.h>
+
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
 #include "Player.h"		//include player to utilize player objects
 using namespace std;
 
@@ -85,7 +86,7 @@ std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex
 	/**
 	* @pre none
 	*	@param none
-	*	@post prints intermission screen for gameplay
+	*	@post prints intermission screen for gameplay 
 	*/
 
 	void printIntermission();
@@ -95,10 +96,7 @@ std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex
 	*	@return: - the shot for the hard ai to play
 	*/
 	std::string hardAiShot(Board* playerBoard);
-
-	void printWinnerP1();
-	void printWinnerP2();
-
+	void explosionAnimation();
 private:
 	bool start;
 	int menuChoice;
