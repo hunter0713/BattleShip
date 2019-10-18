@@ -21,7 +21,7 @@
 */
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
-
+#include <unistd.h>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -85,7 +85,7 @@ std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex
 	/**
 	* @pre none
 	*	@param none
-	*	@post prints intermission screen for gameplay 
+	*	@post prints intermission screen for gameplay
 	*/
 
 	void printIntermission();
@@ -95,6 +95,10 @@ std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex
 	*	@return: - the shot for the hard ai to play
 	*/
 	std::string hardAiShot(Board* playerBoard);
+
+	void printWinnerP1();
+	void printWinnerP2();
+
 private:
 	bool start;
 	int menuChoice;
