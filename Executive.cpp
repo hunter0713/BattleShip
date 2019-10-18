@@ -89,6 +89,10 @@ Executive::Executive()		//Executive constructor
 	{
 			std::cout<<"Please Choose Game Mode:\n" << "1.) Single Player vs AI\n2.) 2-Player\n>> ";
 			std::cin >> menuChoice;
+			cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << endl;
+			cout << "Please enter a 1 or 2" << endl;
 			if(menuChoice == 2)
 			{
 				start = true;
