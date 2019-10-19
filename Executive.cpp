@@ -574,9 +574,6 @@ void Executive::explosionAnimation()
 {
 	system("clear");
 
-
-
-
 cout << "                    \n";
 cout << "                    \n";
 cout << "                    \n";
