@@ -106,6 +106,7 @@ void setShipsLeft(int tempNum, bool sunk);
 int getShipsLeft() const;
 
 void printShipSunk();
+void explosionAnimation();
 
 	////////////////////////////OLD_CODE//////////////////////////
 	std::string shotBoard[8][8];

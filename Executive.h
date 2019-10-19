@@ -96,7 +96,6 @@ std::string mediumAiShot(Board* playerBoard, std::string prevShot, int shipIndex
 	*	@return: - the shot for the hard ai to play
 	*/
 	std::string hardAiShot(Board* playerBoard);
-	void explosionAnimation();
 	void printWinnerP1();
 	void printWinnerP2();
 private:
