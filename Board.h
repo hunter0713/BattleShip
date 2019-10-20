@@ -219,7 +219,21 @@ void explosionAnimation();
 	* @return ship object
 	*/
 	Ship* getShip() const;
-	int getShipIndex(std::string aiGuess);//returns ship at location guessed by AI
+
+	/**
+	* @pre none
+	*	@param the ai's guess location
+	*	@post get ship Index
+	* @return Index of the ship
+	*/
+	int getShipIndex(std::string aiGuess);
+
+	/**
+	* @pre none
+	*	@param row number and column number 
+	*	@post get element on board
+	* @return string of the element on the board
+	*/
 	std::string getElement(int row, int col);
 };
 #endif
