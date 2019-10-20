@@ -131,6 +131,7 @@ Executive::Executive()		//Executive constructor
 	player_1 -> getBoard() -> setupBoard();
 	std::cout << "Press Enter to go to the next Player's turn: ";
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //basically lets the user type in anything, ignoring their input
+	std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	std::cout <<"\nPlayer 2 place your ships\n";		//promt player2 to place their ships
 	//std::cout << "Press Enter to go to the next Player's turn: ";
 	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
@@ -240,6 +241,7 @@ void Executive::game()
 				std::cout << "PLAYER 1 TURN\n";
 				player_1->getBoard()->printShotBoard();
 				player_1->getBoard()->printMyBoard();
+				std::cout << "They have "<<player_2->getBoard()->getShipsLeft()<<" ships left!\n";
 				std::cout <<"Player 1 please hit enter and let other player shoot at your ships in secret: "; //print the board for checking hit or not and hit eneter for next player's turn
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
 				cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
@@ -251,7 +253,7 @@ void Executive::game()
 				std::cout << "PLAYER 2 TURN\n";
 				player_2->getBoard()->printShotBoard();
 				player_2->getBoard()->printMyBoard();
-
+				std::cout << "They have "<<player_1->getBoard()->getShipsLeft()<<" ships left!\n";
 				std::cout <<"Player 2 please hit enter and let other player shoot at your ships in secret: ";//print the board for checking hit or not and hit eneter for next player's turn
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
 				cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";

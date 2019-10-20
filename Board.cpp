@@ -553,7 +553,6 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player's 
 					{
 						printShipSunk();	//prints that the ship has been sunk
 						shipsLeft--;
-						std::cout << "They have "<<shipsLeft<<" ships left!\n";
 					}
 					else
 					{
@@ -706,7 +705,6 @@ void Board::setupBoard()	//sets up the board
 					{
 						std::cout << "Invalid coordinate! Try again.\n";
 					}
-
 				} while(!withinBoundary(userGuess));	//runs until the user's guess is within the boundary
 
 					myBoard[m_rowIndex][m_columnIndex] = ship;	//sets the user's guess location to a ship
