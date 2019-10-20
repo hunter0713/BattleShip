@@ -90,7 +90,6 @@ Executive::Executive()		//Executive constructor
 			cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			cout << endl;
-			cout << "Please enter a 1 or 2" << endl;
 			if(menuChoice == 2)
 			{
 				start = true;
@@ -169,7 +168,7 @@ else if(menuChoice == 1)
 	}
 	else
 	{
-		//error catching somehow
+		std::cout << "Must be a valid number between 1-3\n";
 	}
 }
 player_1->getBoard()->setShipsLeft(numOfBoats, false);
