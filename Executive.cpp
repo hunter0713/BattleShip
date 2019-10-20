@@ -198,6 +198,7 @@ void Executive::game()
 				{
 					player_1->getBoard()->printShotBoard();
 					player_1->getBoard()->printMyBoard();
+					cout << "Player 1, you have " << player_1->getBoard()->getShipsLeft() << " Ships left!\n";
 					std::cout << "Player 1: Where would you like to shoot: "; //print player's board and opponent's board and ask for user a location to shoot
 
 					std::getline(std::cin, guess);
@@ -215,6 +216,7 @@ void Executive::game()
 				{
 					player_2->getBoard()->printShotBoard();
 					player_2->getBoard()->printMyBoard();
+					cout << "Player 2, you have " << player_2->getBoard()->getShipsLeft() << " Ships left!\n";
 					std::cout <<"Player 2: Where would you like to shoot: "; //print player's board and opponent's board and ask for user a location to shoot
 
 					std::getline(std::cin, guess);
@@ -238,7 +240,6 @@ void Executive::game()
 				std::cout << "PLAYER 1 TURN\n";
 				player_1->getBoard()->printShotBoard();
 				player_1->getBoard()->printMyBoard();
-
 				std::cout <<"Player 1 please hit enter and let other player shoot at your ships in secret: "; //print the board for checking hit or not and hit eneter for next player's turn
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
 				cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
@@ -621,7 +622,6 @@ void Executive::shoot(std::string location)
 		{
 			if(player_2->getBoard()->getShip()[i].isSunk())
 			{
-				cout << "Player 2, you have " << player_2->getBoard()->getShipsLeft() << " Ships left!";
 				m_gameOver = true;	//sets to true if they are sunk
 			}
 			else
@@ -643,7 +643,6 @@ void Executive::shoot(std::string location)
 		{
 			if(player_1->getBoard()->getShip()[i].isSunk())
 			{
-				cout << "Player 1, you have " << player_1->getBoard()->getShipsLeft() << " Ships left!\n";
 				m_gameOver = true;	//sets to true if they are sunk
 			}
 			else

@@ -553,7 +553,7 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player's 
 					{
 						printShipSunk();	//prints that the ship has been sunk
 						shipsLeft--;
-						std::cout << "They have "<<shipsLeft<<" ships left\n";
+						std::cout << "They have "<<shipsLeft<<" ships left!\n";
 					}
 					else
 					{
