@@ -616,7 +616,6 @@ void Executive::shoot(std::string location)
 	if(m_player_1Turn % 2 == 1)
 	{
 		hit = player_2->gettingShot(location); //check player_2 has a ship at the location or not
-		if(hit)
 		player_1->shooting(location,hit); //update hit marker for player_1
 
 		for(int i=0;i<numberOfShips;i++)	//checks for game over
@@ -637,7 +636,6 @@ void Executive::shoot(std::string location)
 	else
 	{
 		hit = player_1->gettingShot(location); //check player_1 has a ship at the location or not
-		if(hit)
 		player_2->shooting(location,hit); //update hit marker for player_2
 
 		for(int i=0;i<numberOfShips;i++)	//checks for game over
