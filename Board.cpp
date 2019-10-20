@@ -167,6 +167,8 @@ int Board::getShipsLeft() const
 	return shipsLeft;
 }
 
+//Plays animated text and explosion art for when a ship is sunk.
+//Credit to Jon B. Green for the ascii mushroom cloud art.
 void Board::printShipSunk()
 		{
 			system("clear");
@@ -197,6 +199,7 @@ void Board::printShipSunk()
 
 		}
 
+//Plays an explosion ASCII animation and displays "HIT" text when the player hits another ship but doesn't sink it.
 void Board::explosionAnimation()
 {
 	system("clear");
